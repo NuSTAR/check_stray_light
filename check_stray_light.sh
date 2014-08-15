@@ -32,8 +32,10 @@ export CHECK_PA=$3
 
 # Set the IDL startup script to point to the nustar-idl direcotry:
 ##### Change this for your own build!!! ###
-export IDL_STARTUP=$HOME/science/local/git/check_stray_light/check_stray_startup.pro
-export NUSTAR_IDL_ROOT=$HOME/science/local/git/nustar-idl
+CHECK_DIR=/home/nustar1/Web/NuSTAROperationSite/Operations/check_stray_light
+##############################
+export IDL_STARTUP=$CHECK_DIR/check_stray_startup.pro
+
 
 # Check to make sure this file exists:
 if [ ! -f $IDL_STARTUP ]
@@ -42,12 +44,5 @@ then
     echo "$IDL_STARTUP does not exist!"
     exit 1
 fi
-if [ ! -d $NUSTAR_IDL_ROOT ]
-then
-    echo "Set the NUSTAR_IDL_ROOT environment variaible in $0 first!"
-    echo "$NUSTAR_IDL_ROOT does not exist!"
-    exit 1
-fi
-
 
 idl -quiet check_stray_light.bat
